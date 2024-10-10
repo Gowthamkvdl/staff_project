@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow requests from your front-end
+    origin: "https://sirproject.onrender.com", // Allow requests from your front-end
     credentials: true,
   })
 );

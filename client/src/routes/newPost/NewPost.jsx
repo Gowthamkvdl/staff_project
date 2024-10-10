@@ -31,7 +31,7 @@ const NewPost = () => {
 
     try {
       const postResponse = await axios.post(
-        "http://localhost:8080/api/post/addPost",
+        "https://sirprojectbackend.onrender.com/api/post/addPost",
         formData, // Send formData directly
         {
           headers: {
