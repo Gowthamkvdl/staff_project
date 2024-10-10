@@ -15,7 +15,7 @@ const Card = ({ post }) => {
         <div className="infoImg d-flex my-2">
           <img
             className="img-fluid pdf-img rounded-4"
-            src={`../../public/pdfs/${post.thumbnail}`}
+            src={`pdfs/${post.thumbnail}`}
             alt=""
           />
         </div>
@@ -34,7 +34,7 @@ const Card = ({ post }) => {
             </a>
             <a
               target="_blank"
-              href={`../../public/pdfs/${post.pdf}`}
+              href={`pdfs/${post.pdf}`}
               className="link"
             >
               <div className="btn btn-secondary d-flex flex-row align-items-center justify-content-center">
