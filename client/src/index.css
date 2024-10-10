@@ -1,0 +1,201 @@
+:root {
+  /* Primary: Red Shades */
+  --primary-100: #FFE6E6;
+  --primary-200: #FFB3B3;
+  --primary-300: #FF8080;
+  --primary-400: #FF4D4D;
+  --primary-500: #FF0000; /* Main YouTube Red */
+  --primary-600: #DB0000;
+  --primary-700: #B70000;
+  --primary-800: #930000;
+  --primary-900: #700000;
+
+  /* Secondary: Dark Grays (for dark mode) */
+  --secondary-100: #F9F9F9;
+  --secondary-200: #F1F1F1;
+  --secondary-300: #E0E0E0;
+  --secondary-400: #C4C4C4;
+  --secondary-500: #909090; /* Lighter gray */
+  --secondary-600: #606060;
+  --secondary-700: #383838;
+  --secondary-800: #202020; /* Dark gray background */
+  --secondary-900: #181818; /* Main Dark Mode background */
+
+  /* Neutral: Dark Mode Text and Background */
+  --neutral-100: #FFFFFF; /* White text */
+  --neutral-200: #F1F1F1; 
+  --neutral-300: #E0E0E0;
+  --neutral-400: #C4C4C4;
+  --neutral-500: #909090; /* Placeholder text */
+  --neutral-600: #606060;
+  --neutral-700: #383838;
+  --neutral-800: #202020;
+  --neutral-900: #121212; /* Very dark gray/black for deep backgrounds */
+}
+
+
+
+html {
+  font-size: 100%; /* Base size of 16px */
+}
+
+/* Primary: Growing Nature */
+.primary-100 {
+    background-color:  var(--primary-100) !important;
+}
+.primary-200 {
+    background-color: var(--primary-200) !important;
+}
+.primary-300 {
+    background-color: var(--primary-300) !important;
+}
+.primary-400 {
+    background-color: var(--primary-400) !important;
+}
+.primary-500 {
+    background-color: var(--primary-500) !important;
+}
+.primary-600 {
+    background-color: var(--primary-600) !important;
+}
+.primary-700 {
+    background-color: var(--primary-700) !important;
+    color: white !important;
+}
+.primary-800 {
+    background-color: var(--primary-800) !important;
+    color: white !important;
+}
+.primary-900 {
+    background-color: var(--primary-900) !important;
+    color: white !important;
+}
+
+/* secondary: Violet Blue */
+.secondary-100 {
+    background-color: var(--secondary-100) !important;
+}
+.secondary-200 {
+    background-color: var(--secondary-200) !important;
+}
+.secondary-300 {
+    background-color: var(--secondary-300) !important;
+}
+.secondary-400 {
+    background-color: var(--secondary-400) !important;
+    color: white !important;
+}
+.secondary-500 {
+    background-color: var(--secondary-500) !important;
+    color: white !important;
+}
+.secondary-600 {
+    background-color: var(--secondary-600) !important;
+    color: white !important;
+}
+.secondary-700 {
+    background-color: var(--secondary-700) !important;
+    color: white !important;
+}
+.secondary-800 {
+    background-color: var(--secondary-800) !important;
+    color: white !important;
+}
+.secondary-900 {
+    background-color: var(--secondary-900) !important;
+    color: white !important;
+}
+
+/* Neutral */
+.neutral-100 {
+    background-color: var(--neutral-100) !important;
+}
+.neutral-200 {
+    background-color: var(--neutral-200) !important;
+}
+.neutral-300 {
+    background-color: var(--neutral-300) !important;
+}
+.neutral-400 {
+    background-color: var(--neutral-400) !important;
+}
+.neutral-500 {
+    background-color: var(--neutral-500) !important;
+}
+.neutral-600 {
+    background-color: var(--neutral-600) !important;
+}
+.neutral-700 {
+    background-color: var(--neutral-700) !important;
+    color: white !important;
+}
+.neutral-800 {
+    background-color: var(--neutral-800) !important;
+    color: white !important;
+}
+.neutral-900 {
+    background-color: var(--neutral-900) !important;
+    color: white !important;
+}
+
+body{
+    background-color: var(--secondary-200) !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--primary-200);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-400);
+  border-radius: 20px;
+}
+
+
+
+/* Title Text (e.g., headings, large titles) */
+.title-text {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;   /* Bold */
+}
+
+/* Subtitle Text (e.g., section titles, subtitles) */
+.subtitle-text {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500;   /* Semi-bold */
+}
+
+/* Body Text (e.g., paragraphs, content text) */
+.body-text {
+  font-size: 1rem;    /* 16px */
+  font-weight: 400;   /* Normal */
+}
+
+/* Small Text (e.g., captions, labels) */
+.small-text {
+  font-size: 0.575rem; /* 14px */
+  font-weight: 400;    /* Normal */
+}
+
+
+.banner{
+  z-index: 9;
+  position: fixed;
+  top: 0;
+}
+
+.box-shadow{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.w-90{
+  width: 90%;
+}
