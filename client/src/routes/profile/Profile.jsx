@@ -70,7 +70,7 @@ const Profile = () => {
             <div className="bookCard" key={post.postId}>
               <Card post={post} />
               <div className="btns ms-auto mt-2">
-                <button className="btn btn-warning me-2">
+                <button className="btn btn-warning ms-3 me-2">
                   <Link to={`/editPost/?id=${post.postId}`} className="link">
                     <span className="material-symbols-outlined text-dark">
                       edit

@@ -14,7 +14,7 @@ const router = express.Router();
 const storage = multer.diskStorage({ 
   destination: function (req, file, cb) {
  
-    cb(null, "../client/pdfs"); // Pass the resolved path to Multer
+    cb(null, "../client/public/pdfs"); // Pass the resolved path to Multer
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now();

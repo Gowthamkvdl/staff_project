@@ -15,7 +15,7 @@ const Card = ({ post }) => {
         <div className="infoImg d-flex my-2">
           <img
             className="img-fluid pdf-img rounded-4"
-            src={`../../pdfs/${post.thumbnail}`}
+            src={`../../public/pdfs/${post.thumbnail}`}
             alt=""
           />
         </div>
@@ -24,11 +24,7 @@ const Card = ({ post }) => {
             {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
           </div>
           <div className="btns d-flex">
-            <a
-              href={post.link}
-              target="_blank"
-              className="link"
-            >
+            <a href={post.link} target="_blank" className="link">
               <div className="btn me-2 primary-500 text-white d-flex flex-row align-items-center justify-content-center">
                 <span className="material-symbols-outlined me-1">
                   play_circle
@@ -38,7 +34,7 @@ const Card = ({ post }) => {
             </a>
             <a
               target="_blank"
-              href={`../../pdfs/${post.pdf}`}
+              href={`../../public/pdfs/${post.pdf}`}
               className="link"
             >
               <div className="btn btn-secondary d-flex flex-row align-items-center justify-content-center">
