@@ -39,6 +39,15 @@ const NewPost = () => {
           },
         }
       );
+      // const postResponse = await axios.post(
+      //   "http://localhost:8080/api/post/addPost",
+      //   formData, // Send formData directly
+      //   {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   }
+      // );
       console.log(postResponse);
       setLoading(false);
       toast.success("Post created successfully");

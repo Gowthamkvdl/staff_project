@@ -12,9 +12,6 @@ const Login = () => {
   useEffect(()=>{
     if(localStorage.getItem("user")){
       navigate("/profile")
-      toast.success("Already logged in",{
-        id: "alreadyLoggedIn",
-      })
     }
   },[])
 

@@ -24,3 +24,8 @@
   text-decoration: none !important;
   color: white !important;
 }
+
+.nav-link.active{
+  border-bottom: 3px solid var(--primary-100) !important;
+  margin-bottom: 2px;
+}

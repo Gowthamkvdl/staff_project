@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 
 const Navbar = () => {
+
+  const location = useLocation();
+
   useEffect(() => {
     const sideParts = document.querySelectorAll(".sidePart");
     const navbar = document.querySelector(".navbar");
@@ -33,6 +36,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const isActive = (path) => {
+    return location.pathname === path ? "active" : "";
+  };
+
   return (
     <div>
       <Toaster
@@ -59,10 +66,12 @@ const Navbar = () => {
             id="navbarNav"
           >
             <ul className="navbar-nav ">
-              <li className="nav-item">
+              <li className="nav-item ">
                 <Link className="link" to="/">
                   <a
-                    className="nav-link d-flex flex-column align-items-center active"
+                    className={`nav-link d-flex flex-column align-items-center ${isActive(
+                      "/"
+                    )}`}
                     href="#"
                   >
                     <span className="material-symbols-outlined text-light d-md-none mt-1 title-text">
@@ -88,7 +97,9 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="link" to={"/fav"}>
                   <a
-                    className="nav-link d-flex flex-column align-items-center"
+                    className={`nav-link d-flex flex-column align-items-center ${isActive(
+                      "/fav"
+                    )}`}
                     href="#"
                   >
                     <span class="material-symbols-outlined text-light d-md-none mt-1 title-text">
@@ -102,7 +113,12 @@ const Navbar = () => {
               </li>
               <li className="nav-item d-md-none">
                 <Link className="link" to={"/doubt"}>
-                  <a className="nav-link" href="#">
+                  <a
+                    className={`nav-link d-flex flex-column align-items-center ${isActive(
+                      "/doubt"
+                    )}`}
+                    href="#"
+                  >
                     <span className="material-symbols-outlined text-light d-md-none mt-1 title-text">
                       help
                     </span>
@@ -112,7 +128,12 @@ const Navbar = () => {
               </li>
               <li className="nav-item d-md-none">
                 <Link className="link" to={"/Login"}>
-                  <a className="nav-link" href="#">
+                  <a
+                    className={`nav-link d-flex flex-column align-items-center ${isActive(
+                      "/profile" 
+                    )} ${isActive("/login")}`}
+                    href="#"
+                  >
                     <span className="material-symbols-outlined text-light d-md-none mt-1 title-text">
                       person
                     </span>
@@ -122,16 +143,6 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="LoginBtn d-none d-md-block sidePart">
-          <Link className="link" to={"/Login"}>
-            <button className="btn secondary-700 d-flex align-items-center gap-1">
-              <span className="material-symbols-outlined text-light">
-                person
-              </span>
-              Login
-            </button>
-          </Link>
         </div>
       </nav>
     </div>

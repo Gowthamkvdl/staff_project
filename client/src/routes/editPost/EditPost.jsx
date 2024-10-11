@@ -9,12 +9,15 @@ const EditPost = () => {
   const [postData, setPostData] = useState(null); // State to hold post data
   const [loading, setLoading] = useState(true); // State for loading status
   const [error, setError] = useState(null); // State for error handling
+  const [getting,setGetting] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchPostData = async () => {
       const postId = searchParams.get("id"); // Get the post ID from search params
       try {
+        setLoading(true); 
+        setGetting(true);
         const response = await apiRequest.get(`/post/${postId}`); // Fetch the post data
         setPostData(response.data); // Set the post data in state
       } catch (err) {
@@ -22,6 +25,7 @@ const EditPost = () => {
         setError("Failed to fetch post data."); // Set error message
       } finally {
         setLoading(false); // Set loading to false after fetching
+        setGetting(false);
       }
     };
 
@@ -78,58 +82,61 @@ const EditPost = () => {
           <span className="title-text heading">Edit Post</span>
           <span className="opacity-75">You can add edit post here.</span>
         </div>
-        <form action="" onSubmit={handleUpdate} className="mt-4 mx-3">
-          <label htmlFor="title">Topic Title</label>
-          <input
-            type="text"
-            name="title"
-            defaultValue={postData && postData.title}
-            className="form-control shadow-none mb-2"
-            id="title"
-          />
-          <label htmlFor="thumbnail">Thumbnail Image</label>
-          <input
-            type="file"
-            name="thumbnail"
-            className="form-control shadow-none mb-2"
-            id="thumbnail"
-            accept="image/*"
-          />
-          <label htmlFor="pdf">PDF</label>
-          <input
-            type="file"
-            name="pdf"
-            className="form-control shadow-none mb-2"
-            id="pdf"
-            accept="application/pdf"
-          />
-
-          <label htmlFor="link">Video Link</label>
-          <input
-            type="text"
-            name="link"
-            className="form-control shadow-none mb-2"
-            id="link"
-            defaultValue={postData && postData.link}
-          />
-          <div className="d-flex gap-2">
+        {getting && <span className="text-center mx-auto">Loading...</span>}
+        {!getting && (
+          <form action="" onSubmit={handleUpdate} className="mt-4 mx-3">
+            <label htmlFor="title">Topic Title</label>
             <input
-              type="checkbox"
-              name="important"
-              defaultChecked={postData && postData.important}
-              className="form-check form-check-xl"
-              id="important"
+              type="text"
+              name="title"
+              defaultValue={postData && postData.title}
+              className="form-control shadow-none mb-2"
+              id="title"
             />
-            <label htmlFor="important">Important</label>
-          </div>
-          <button 
-            disabled={loading}
-            className="uploadBtn btn btn-primary float-end mt-3"
-            type="submit"
-          >
-            {loading === true ? "Updating..." : "Update"}
-          </button>
-        </form>
+            <label htmlFor="thumbnail">Thumbnail Image</label>
+            <input
+              type="file"
+              name="thumbnail"
+              className="form-control shadow-none mb-2"
+              id="thumbnail"
+              accept="image/*"
+            />
+            <label htmlFor="pdf">PDF</label>
+            <input
+              type="file"
+              name="pdf"
+              className="form-control shadow-none mb-2"
+              id="pdf"
+              accept="application/pdf"
+            />
+
+            <label htmlFor="link">Video Link</label>
+            <input
+              type="text"
+              name="link"
+              className="form-control shadow-none mb-2"
+              id="link"
+              defaultValue={postData && postData.link}
+            />
+            <div className="d-flex gap-2">
+              <input
+                type="checkbox"
+                name="important"
+                defaultChecked={postData && postData.important}
+                className="form-check form-check-xl"
+                id="important"
+              />
+              <label htmlFor="important">Important</label>
+            </div>
+            <button
+              disabled={loading}
+              className="uploadBtn btn btn-primary float-end mt-3"
+              type="submit"
+            >
+              {loading === true ? "Updating..." : "Update"}
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

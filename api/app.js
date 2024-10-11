@@ -13,6 +13,12 @@ app.use(
     credentials: true,
   })
 );
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173", // Allow requests from your front-end
+//     credentials: true,
+//   })
+// );
 
 // Middleware
 app.use(express.json());

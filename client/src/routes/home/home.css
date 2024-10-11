@@ -28,6 +28,7 @@
 .heading{
     color: var(--primary-400);
     text-decoration: underline;
+    margin-top: 10px;
 }
 
 .logo{

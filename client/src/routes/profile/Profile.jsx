@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Card from "../../components/card/Card";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import CardSkeleton from "../../components/skeletonCard/SkeletonCard";
+import { Link, useLoaderData, useNavigate, Await } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest"; // Ensure this is correctly imported
 import { toast } from "react-hot-toast";
 
@@ -24,7 +25,6 @@ const Profile = () => {
 
   const handleDelete = async (id) => {
     setDeleting(true);
-    console.log(id);
     try {
       await apiRequest.delete(`/post/deletePost/${id}`); // Pass the ID in the URL
       window.location.reload(); // Reload the page to fetch the updated posts
@@ -57,81 +57,108 @@ const Profile = () => {
           </Link>
         </div>
         <div className="col-5">
-          <button onClick={handleLogout} className="btn w-100 d-flex gap-1 justify-content-center align-items-center mt-3 fs-2 primary-500 text-white">
-            <span class="material-symbols-outlined fs-1">logout</span>
+          <button
+            onClick={handleLogout}
+            className="btn w-100 d-flex gap-1 justify-content-center align-items-center mt-3 fs-2 primary-500 text-white"
+          >
+            <span className="material-symbols-outlined fs-1">logout</span>
             <span>Logout</span>
           </button>
         </div>
       </div>
       <div className="cards">
         <div className="subtitle-text mt-5">Already posted things</div>
-        <div className="cards">
-          {posts.map((post) => (
-            <div className="bookCard" key={post.postId}>
-              <Card post={post} />
-              <div className="btns ms-auto mt-2">
-                <button className="btn btn-warning ms-3 me-2">
-                  <Link to={`/editPost/?id=${post.postId}`} className="link">
-                    <span className="material-symbols-outlined text-dark">
-                      edit
-                    </span>
-                  </Link>
-                </button>
-                <button
-                  className="btn primary-500 text-white"
-                  data-bs-toggle="modal"
-                  data-bs-target={`#deleteModal${post.postId}`}
-                  onClick={() => setDeletingId(post.postId)} // Store the ID of the post to delete
-                >
-                  <span className="material-symbols-outlined">delete</span>
-                </button>
+        <Suspense
+          fallback={
+            <div className="cards">
+              <CardSkeleton NoOfCards={8} />
+            </div>
+          }
+        >
+          <Await
+            resolve={posts.postsResponse}
+            errorElement={
+              <div>
+                {/* Handle error appropriately */}
+                <p>Error loading posts.</p>
               </div>
-              {/* Modal for confirming deletion */}
-              <div
-                className="modal fade"
-                id={`deleteModal${post.postId}`}
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h1 className="modal-title fs-5" id="exampleModalLabel">
-                        Are you sure?
-                      </h1>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="modal-body">
-                      Do you want to delete this post?
-                    </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-bs-dismiss="modal"
+            }
+          >
+            {(resolvedPosts) =>
+              resolvedPosts.data.map((post) => (
+                <div className="bookCard" key={post.postId}>
+                  <Card post={post} />
+                  <div className="btns ms-auto mt-2">
+                    <button className="btn btn-warning ms-3 me-2">
+                      <Link
+                        to={`/editPost/?id=${post.postId}`}
+                        className="link"
                       >
-                        Close
-                      </button>
-                      <button
-                        onClick={() => handleDelete(post.postId)} // Pass the ID to handleDelete
-                        type="button"
-                        className="btn btn-danger"
-                      >
-                        {deleting ? "Deleting..." : "Delete"}
-                      </button>
+                        <span className="material-symbols-outlined text-dark">
+                          edit
+                        </span>
+                      </Link>
+                    </button>
+                    <button
+                      className="btn primary-500 text-white"
+                      data-bs-toggle="modal"
+                      data-bs-target={`#deleteModal${post.postId}`}
+                      onClick={() => setDeletingId(post.postId)} // Store the ID of the post to delete
+                    >
+                      <span className="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                  {/* Modal for confirming deletion */}
+                  <div
+                    className="modal fade"
+                    id={`deleteModal${post.postId}`}
+                    tabIndex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h1
+                            className="modal-title fs-5"
+                            id="exampleModalLabel"
+                          >
+                            Are you sure?
+                          </h1>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div className="modal-body">
+                          Do you want to delete this post?
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button
+                            onClick={() => handleDelete(post.postId)} // Pass the ID to handleDelete
+                            type="button"
+                            className="btn btn-danger"
+                          >
+                            {deleting ? "Deleting..." : "Delete"}
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              ))
+            }
+          </Await>
+        </Suspense>
       </div>
     </div>
   );
