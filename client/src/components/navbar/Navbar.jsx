@@ -131,7 +131,7 @@ const Navbar = () => {
                   <a
                     className={`nav-link d-flex flex-column align-items-center ${isActive(
                       "/profile" 
-                    )} ${isActive("/login")}`}
+                    )} ${isActive("/Login")}`}
                     href="#"
                   >
                     <span className="material-symbols-outlined text-light d-md-none mt-1 title-text">
