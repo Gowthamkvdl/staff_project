@@ -3,6 +3,7 @@ import sirImg from "../../assets/sirImg.png";
 import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import "./login.css"
 
 const Login = () => {
 
