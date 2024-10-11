@@ -52,7 +52,7 @@ const Login = () => {
           </span>
           <div className="img w-50 mx-auto ">
             <figure>
-              <img src={sirImg} alt="" className="img-fluid rounded-2" />
+              <img src={sirImg} alt="" className="img-fluid sirPhoto rounded-2" />
               <figcaption className="mx-auto text-center">
                 <span className="subtitle-text">Julian Menezes .R</span>
               </figcaption>
