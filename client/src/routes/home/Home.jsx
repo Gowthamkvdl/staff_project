@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import "./home.css";
 import Card from "../../components/card/Card";
 import logo from "../../assets/logo.png";
@@ -7,6 +7,19 @@ import CardSkeleton from "../../components/skeletonCard/SkeletonCard";
 
 const Home = () => {
   const posts = useLoaderData();
+  const [searchInput, setSearchInput] = useState("");
+  const [allPosts, setAllPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+
+  // Filter posts based on search input
+  useEffect(() => {
+    const filtered = allPosts.filter((post) =>
+      post.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    console.log(searchInput)
+    setFilteredPosts(filtered);
+  }, [searchInput, allPosts]);
 
   return (
     <div>
@@ -29,6 +42,8 @@ const Home = () => {
             placeholder="Search Topics"
             name="text"
             className="input box-shadow"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
           <svg
             fill="#000000"
@@ -65,11 +80,16 @@ const Home = () => {
                 </div>
               }
             >
-              {(resolvedPosts) =>
-                resolvedPosts.data.map((post) => (
-                  <Card post={post} key={post.id} />
-                ))
-              }
+              {(resolvedPosts) => {
+                setAllPosts(resolvedPosts.data);
+                return filteredPosts.length > 0 ? (
+                  filteredPosts.map((post) => (
+                    <Card post={post} key={post.id} />
+                  ))
+                ) : (
+                  <p>No posts found.</p>
+                );
+              }}
             </Await>
           </Suspense>
         </div>
