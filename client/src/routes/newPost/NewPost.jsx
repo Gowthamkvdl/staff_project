@@ -30,17 +30,8 @@ const NewPost = () => {
     console.log(link);
 
     try {
-      // const postResponse = await axios.post(
-      //   "https://sirprojectbackend.onrender.com/api/post/addPost",
-      //   formData, // Send formData directly
-      //   {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   }
-      // );
       const postResponse = await axios.post(
-        "http://localhost:8080/api/post/addPost",
+        "https://staffprojectbackend.onrender.com/api/post/addPost",
         formData, // Send formData directly
         {
           headers: {
@@ -48,6 +39,15 @@ const NewPost = () => {
           },
         }
       );
+      // const postResponse = await axios.post(
+      //   "http://localhost:8080/api/post/addPost",
+      //   formData, // Send formData directly
+      //   {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   }
+      // );
       console.log(postResponse);
       setLoading(false);
       toast.success("Post created successfully");
