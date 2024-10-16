@@ -58,7 +58,7 @@ const Navbar = () => {
       />
       <nav className="navbar container navbar-expand d-flex align-items-center justify-content-md-between justify-content-center bg-body-white">
         <div className="touristBus d-none d-md-block sidePart">
-          <h1 className="title-text">SkillStream Academy</h1>
+          <h1 className="title-text">Name</h1>
         </div>
         <div className="">
           <div
