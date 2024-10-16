@@ -29,7 +29,7 @@ const Home = () => {
         </div>
         <div className="text">
           <h1 className="title-text d-md-none mb-0 mt-3 heading">
-            SkillStream Academy
+            The Name You Want
           </h1>
           <p className="mt-0 d-md-none">By Shada Group</p>
         </div>

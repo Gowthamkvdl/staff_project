@@ -7,18 +7,18 @@ const PORT = 8080;
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://sirproject.onrender.com", // Allow requests from your front-end
-    credentials: true,
-  })
-);
 // app.use(
 //   cors({
-//     origin: "http://localhost:5173", // Allow requests from your front-end
+//     origin: "https://sirproject.onrender.com", // Allow requests from your front-end
 //     credentials: true,
 //   })
 // );
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow requests from your front-end
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(express.json());
