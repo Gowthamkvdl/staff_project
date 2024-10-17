@@ -13,15 +13,13 @@ const router = express.Router();
 // Configure Multer storage
 const storage = multer.diskStorage({ 
   destination: function (req, file, cb) {
- 
-    cb(null, "../client/public/pdfs"); // Pass the resolved path to Multer
+    cb(null, "../client/public"); // Pass the resolved path to Multer
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now();
     cb(null, uniqueSuffix + "-" + file.originalname); // Provide a unique name to avoid conflicts
   },
 });
-
 
 const upload = multer({ storage }).fields([
   { name: "pdf", maxCount: 1 },
