@@ -6,7 +6,7 @@ import "./card.css";
 const Card = ({ post }) => {
 
   // const url = "http://localhost:8080/pdfs/";
-  const url = "https://sirprojectbackend.onrender.com/pdfs/";
+  const url = "https://staffprojectbackend.onrender.com/pdfs/";
   console.log(post);
   return (
     <div className="infoCard bg-light rounded-4 box-shadow mx-1 mt-4 p-3">
