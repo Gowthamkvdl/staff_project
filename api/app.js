@@ -11,19 +11,19 @@ const PORT = 8080;
 const app = express();
 
 // Configure CORS
-app.use(
-  cors({
-    origin: "http://localhost:5173", // Allow requests from your front-end
-    credentials: true,
-  })
-);
-// Configure CORS
 // app.use(
 //   cors({
-//     origin: "https://staffproject.onrender.com", // Allow requests from your front-end
+//     origin: "http://localhost:5173", // Allow requests from your front-end
 //     credentials: true,
 //   })
 // );
+// Configure CORS
+app.use(
+  cors({
+    origin: "https://staffproject.onrender.com", // Allow requests from your front-end
+    credentials: true,
+  })
+);
 
 // Get the current file path
 const __filename = fileURLToPath(import.meta.url);
