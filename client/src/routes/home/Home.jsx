@@ -29,7 +29,7 @@ const Home = () => {
         </div>
         <div className="text">
           <h1 className="title-text d-md-none mb-0 mt-3 heading">
-            The Name You Want
+            The name you want
           </h1>
           <p className="mt-0 d-md-none">By Shada Group</p>
         </div>

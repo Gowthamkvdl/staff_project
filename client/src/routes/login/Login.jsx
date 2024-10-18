@@ -4,7 +4,7 @@ import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import "./login.css"
-
+ 
 const Login = () => {
 
   const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ const Login = () => {
             <figure>
               <img src={sirImg} alt="" className="img-fluid sirPhoto rounded-2" />
               <figcaption className="mx-auto text-center">
-                <span className="subtitle-text">Your Name</span>
+                <span className="subtitle-text">Your name</span>
               </figcaption>
               <figcaption className="mx-auto body-text text-center">
                 <span className="body-text">

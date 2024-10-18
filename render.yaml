@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: staffproject
+    name: sirproject
     env: static
     staticPublishPath: dist  
     routes:

@@ -2,7 +2,11 @@ import React from "react";
 import { formatDistanceToNow } from "date-fns";
 import "./card.css";
 
+
 const Card = ({ post }) => {
+
+  // const url = "http://localhost:8080/pdfs/";
+  const url = "https://sirprojectbackend.onrender.com/pdfs/";
   console.log(post);
   return (
     <div className="infoCard bg-light rounded-4 box-shadow mx-1 mt-4 p-3">
@@ -15,7 +19,7 @@ const Card = ({ post }) => {
         <div className="infoImg d-flex my-2">
           <img
             className="img-fluid pdf-img rounded-4"
-            src={`pdfs/${post.thumbnail}`}
+            src={`${url}${post.thumbnail}`}
             alt=""
           />
         </div>
@@ -32,11 +36,7 @@ const Card = ({ post }) => {
                 <span>Link</span>
               </div>
             </a>
-            <a
-              target="_blank"
-              href={`pdfs/${post.pdf}`}
-              className="link"
-            >
+            <a target="_blank" href={`${url}${post.pdf}`} className="link">
               <div className="btn btn-secondary d-flex flex-row align-items-center justify-content-center">
                 <span className="material-symbols-outlined me-1">
                   dictionary
